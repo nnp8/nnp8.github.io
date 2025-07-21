@@ -64,11 +64,11 @@
 
 由于每个Topic的数据都是分布式存储在多个Broker中的(如下图示)，而为了决定这个Topic的哪些数据放在这个Broker上、哪些数据放在那个Broker上，所以RocketMQ引入了MessageQueue。
 
-<img width="1600" height="1186" alt="image" src="https://github.com/user-attachments/assets/3f0fa215-40bc-448d-83e5-fdceeb9cecb2" />
+<img width="100%" height="100%" alt="image1" src="https://github.com/user-attachments/assets/3f0fa215-40bc-448d-83e5-fdceeb9cecb2" />
 
 一个MessageQueue本质上就是一个数据分片。假设某个Topic有1万条数据，而且这个Topic有4个MessageQueue，那么可以认为会在每个MessageQueue中放入2500条数据。当然这不是绝对的，有可能有的MessageQueue数据多，有的数据少，这要根据消息写入MessageQueue的策略来决定。如果假设每个MessageQueue会平均分配这个Topic的数据，那么每个Broker就会有两个MessageQueue，如下图示：
 
-<img width="1678" height="1198" alt="image" src="https://github.com/user-attachments/assets/ae28a32e-a797-4549-9d92-ea1619aef2ca" />
+<img width="100%" height="100%" alt="image2" src="https://github.com/user-attachments/assets/ae28a32e-a797-4549-9d92-ea1619aef2ca" />
 
 通过将一个Topic的数据拆分为多个MessageQueue数据分片，然后在每个Broker上都会存储一部分MessageQueue数据分片，这样就可以实现Topic数据的分布式存储。
 
@@ -80,7 +80,7 @@
 
 假设消息写入MessageQueue的策略是：生产者会均匀把消息写入每个MessageQueue。也就是生产者发送20条数据出去，4个MessageQueue都会各自写入5条数据。
 
-<img width="2122" height="978" alt="image" src="https://github.com/user-attachments/assets/cddd2864-9b70-449f-874c-b0217043bfe6" />
+<img width="100%" height="100%" alt="image3" src="https://github.com/user-attachments/assets/cddd2864-9b70-449f-874c-b0217043bfe6" />
 
 那么通过这个策略，就可以让生产者把写入请求分散给多个Broker，可以让每个Broker都均匀分摊写入请求压力。如果单个Broker可以抗每秒7万并发，那么两个Broker就可以抗每秒14万并发，这样就实现了RocketMQ集群抗下每秒10万+超高并发。
 
@@ -92,7 +92,7 @@
 
 如果某个Broker临时出现故障了，比如Master Broker挂了，那么需要等待其他Slave Broker自动热切换为Master Broker，此时对这一组Broker来说就没有Master Broker可以写入了。
 
-<img width="2162" height="964" alt="image" src="https://github.com/user-attachments/assets/63497f9f-462b-4184-b930-70bbd84627ab" />
+<img width="100%" height="100%" alt="image4" src="https://github.com/user-attachments/assets/63497f9f-462b-4184-b930-70bbd84627ab" />
 
 如果按照前面的策略来均匀把数据写入各个Broker上的MessageQueue，那么会导致在一段时间内，每次访问到这个挂掉的Master Broker都会访问失败。对于这个问题，通常来说可以在Producer中开启一个开关，就是sendLatencyFaultEnable。
 
@@ -146,7 +146,7 @@
 
 首先Broker会把这个消息顺序写入磁盘上的一个日志文件CommitLog，也就是直接追加写入这个日志文件的末尾。一个CommitLog日志文件限定最多1GB，如果一个CommitLog日志文件写满了1GB，就会创建另一个新的CommitLog日志文件。所以，磁盘上会有很多个CommitLog日志文件。
 
-<img width="1878" height="770" alt="image" src="https://github.com/user-attachments/assets/14c8c109-959d-496a-a08e-2589379263a4" />
+<img width="100%" height="100%" alt="image5" src="https://github.com/user-attachments/assets/14c8c109-959d-496a-a08e-2589379263a4" />
 
 <br>
 
@@ -166,7 +166,7 @@
 
 下图加入了两个ConsumeQueue，其中ConsumeQueue0和ConsumeQueue1分别对应着Topic里的MessageQueue0和MessageQueue1。也就是这个Topic的MessageQueue0和MessageQueue1就放在这个Broker机器上，而且每个MessageQueue此时在磁盘上就对应着一个ConsumeQueue，即MessageQueue0对应着该Broker磁盘上的ConsumeQueue0，MessageQueue1对应着该Broker磁盘上的ConsumeQueue1。
 
-<img width="2156" height="548" alt="image" src="https://github.com/user-attachments/assets/ec5d549d-aef8-40b0-b384-3164aaca279a" />
+<img width="100%" height="100%" alt="image6" src="https://github.com/user-attachments/assets/ec5d549d-aef8-40b0-b384-3164aaca279a" />
 
 接着假设这个Topic的名字叫：TopicOrderPaySuccess，那么此时在这个Broker的磁盘上应该有如下两个路径的文件：
 
@@ -177,7 +177,7 @@
 
 比如现在生产者发送一条消息给MessageQueue0，此时Broker就会将这条消息在CommitLog日志文件中的offset偏移量，写入到MessageQueue0对应的ConsumeQueue0中。所以ConsumeQueue0中存储的是：一条消息在CommitLog文件中的物理位置(即offset偏移量)，也可以理解ConsumeQueue中的一个物理位置其实是对CommitLog文件中一条消息的地址引用。
 
-<img width="2162" height="678" alt="image" src="https://github.com/user-attachments/assets/d2c35f00-652e-44a3-811a-3117b05793c7" />
+<img width="100%" height="100%" alt="image7" src="https://github.com/user-attachments/assets/d2c35f00-652e-44a3-811a-3117b05793c7" />
 
 此外，在ConsumeQueue中存储的不只是消息在CommitLog中的offset偏移量，还会包含消息的长度、Tag、HashCode。ConsumeQueue中的一条数据是20字节，每个ConsumeQueue文件会保存30万条数据，所以每个文件大概是5.72MB。
 
@@ -199,7 +199,7 @@ RocketMQ中的Broker会基于OS操作系统的PageCache和顺序写来提升往C
 
 如下图示，数据先写入OS的PageCache缓存，然后再由OS自己的线程将缓存里的数据刷入磁盘中。所以采用磁盘文件顺序写 + OS PageCache写入 + OS异步刷盘策略，可以让消息写入CommitLog的性能跟写入内存里是差不多的，从而让Broker能高吞吐地处理每秒大量的消息写入请求。
 
-<img width="2160" height="932" alt="image" src="https://github.com/user-attachments/assets/ca35d7ad-5d4a-4ebf-81b3-e67689ebc50a" />
+<img width="100%" height="100%" alt="image8" src="https://github.com/user-attachments/assets/ca35d7ad-5d4a-4ebf-81b3-e67689ebc50a" />
 
 <br>
 
@@ -215,7 +215,7 @@ RocketMQ中的Broker会基于OS操作系统的PageCache和顺序写来提升往C
 
 如果强制每次消息写入都要直接刷入磁盘，那么必然会导致每条消息的写入性能急剧下降，从而导致消息写入的吞吐量急剧下降。
 
-<img width="2154" height="978" alt="image" src="https://github.com/user-attachments/assets/9d6c53df-b21d-4b08-b1fb-a260f4358ebb" />
+<img width="100%" height="100%" alt="image9" src="https://github.com/user-attachments/assets/9d6c53df-b21d-4b08-b1fb-a260f4358ebb" />
 
 <br>
 
@@ -259,7 +259,7 @@ Producer发送消息到Broker后，Broker首先会将消息写入到CommitLog文
 
 如果要让Broker实现高可用，那么必须要有一组Broker：一个Leader Broker写入数据，两个Follower Broker备份数据。当Leader Broker接收到写入请求写入数据后，直接把数据同步给其他的Follower Broker。这样，一条数据就会在三个Broker上有三份副本。此时如果Leader Broker宕机，那么就让其他Follower Broker自动切换为新的Leader Broker，继续接收写入请求。
 
-<img width="2002" height="1198" alt="image" src="https://github.com/user-attachments/assets/55e4651c-59b7-49a6-b31c-d34049afd352" />
+<img width="100%" height="100%" alt="image10" src="https://github.com/user-attachments/assets/55e4651c-59b7-49a6-b31c-d34049afd352" />
 
 <br>
 
@@ -271,7 +271,7 @@ DLedger技术也有一个CommitLog机制。把数据交给DLedger，DLedger就�
 
 同时，使用DLedger来管理CommitLog后，Broker还是可以基于DLedger管理的CommitLog去构建出各个ConsumeQueue文件的。
 
-<img width="1990" height="1208" alt="image" src="https://github.com/user-attachments/assets/d52391d5-3c73-4144-90a9-e0b310ca4ef8" />
+<img width="100%" height="100%" alt="image11" src="https://github.com/user-attachments/assets/d52391d5-3c73-4144-90a9-e0b310ca4ef8" />
 
 <br>
 
@@ -309,7 +309,7 @@ Leader Broker收到数据写入请求后，会由DLedger把数据同步给其他
 
 以上就是DLedger基于Raft协议实现的Broker多副本同步机制。
 
-<img width="2094" height="1182" alt="image" src="https://github.com/user-attachments/assets/d099f143-f843-44f6-bfe6-db912bcb62ca" />
+<img width="100%" height="100%" alt="image12" src="https://github.com/user-attachments/assets/d099f143-f843-44f6-bfe6-db912bcb62ca" />
 
 <br>
 
@@ -388,7 +388,7 @@ Leader Broker收到数据写入请求后，会由DLedger把数据同步给其他
 
 下图展示了两个系统，每个系统都有2台机器，每个系统都有一个自己的消费者组。
 
-<img width="2158" height="1052" alt="image" src="https://github.com/user-attachments/assets/1fe5be2a-a561-4732-ab65-8a8ab1153b7a" />
+<img width="100%" height="100%" alt="image13" src="https://github.com/user-attachments/assets/1fe5be2a-a561-4732-ab65-8a8ab1153b7a" />
 
 <br>
 
@@ -404,7 +404,7 @@ Leader Broker收到数据写入请求后，会由DLedger把数据同步给其他
 
 下图展示了对于同一条订单支付成功的消息，库存系统的一台机器获取到了、营销系统的一台机器也获取到了。所以在消费时，不同的系统应该设置不同的消费者组。如果不同的消费者组订阅了同一个Topic，对Topic里的同一条消息，每个消费者组都会获取到这条消息。
 
-<img width="2162" height="860" alt="image" src="https://github.com/user-attachments/assets/98ead976-5266-4426-85d6-93f591e2dc0b" />
+<img width="100%" height="100%" alt="image14" src="https://github.com/user-attachments/assets/98ead976-5266-4426-85d6-93f591e2dc0b" />
 
 <br>
 
@@ -430,7 +430,7 @@ Leader Broker收到数据写入请求后，会由DLedger把数据同步给其他
 
 对于Topic的各个MessageQueue而言，则是通过各个ConsumeQueue文件来存储属于MessageQueue的消息在CommitLog文件中的物理地址(即offset偏移量)。
 
-<img width="1934" height="1186" alt="image" src="https://github.com/user-attachments/assets/6e96c4d6-685e-4ea4-b45c-612f3fb99071" />
+<img width="100%" height="100%" alt="image15" src="https://github.com/user-attachments/assets/6e96c4d6-685e-4ea4-b45c-612f3fb99071" />
 
 <br>
 
@@ -501,7 +501,7 @@ Broker在收到消费者的拉取请求后，是如何将消息读取出来，�
 
 比如现在对ConsumeQueue0的消费进度就是在offset=1的位置，那么Broker会记录下一个ConsumeOffset来标记该消费者的消费进度。这样下次这个消费者组只要再次拉取这个ConsumeQueue的消息，就可以从Broker记录的消费位置开始继续拉取，不用重头开始拉取了。
 
-<img width="1822" height="1178" alt="image" src="https://github.com/user-attachments/assets/bd021a9c-ff71-4d35-ab0d-6d266cad7d61" />
+<img width="100%" height="100%" alt="image16" src="https://github.com/user-attachments/assets/bd021a9c-ff71-4d35-ab0d-6d266cad7d61" />
 
 <br>
 
@@ -565,7 +565,7 @@ Broker在实现高可用架构时会有主从之分。消费者可以从Master B
 
 依靠这个将消息写入CommitLog时先进入OS的PageCache而不是直接写入磁盘的机制，才可以实现Broker写CommitLog文件的性能是内存写级别的，才可以实现Broker超高的消息写入吞吐量。
 
-<img width="1610" height="1214" alt="image" src="https://github.com/user-attachments/assets/704e2f4f-f49e-4f2e-8a48-0dfb181537ac" />
+<img width="100%" height="100%" alt="image17" src="https://github.com/user-attachments/assets/704e2f4f-f49e-4f2e-8a48-0dfb181537ac" />
 
 <br>
 
@@ -635,7 +635,7 @@ Broker在实现高可用架构时会有主从之分。消费者可以从Master B
 
 首先，Broker有一个Reactor主线程，这个线程会负责监听一个网络端口，比如监听个2888，39150这样的端口。接着，假设有一个Producer现在想要跟Broker建立一个TCP长连接。
 
-<img width="1826" height="892" alt="image" src="https://github.com/user-attachments/assets/602d0339-7f92-4844-9d9a-6778712c2b3f" />
+<img width="100%" height="100%" alt="image18" src="https://github.com/user-attachments/assets/602d0339-7f92-4844-9d9a-6778712c2b3f" />
 
 <br>
 
@@ -661,7 +661,7 @@ TCP就是一个协议，所谓协议的意思就是，按照TCP这个协议规�
 
 假设有一个Producer要跟Broker建立一个TCP长连接，此时Broker上的Reactor主线程会在端口上监听到这个Producer建立连接的请求。
 
-<img width="2164" height="736" alt="image" src="https://github.com/user-attachments/assets/4e5bf94b-2b61-4dbe-9cc4-c6efc2aba717" />
+<img width="100%" height="100%" alt="image19" src="https://github.com/user-attachments/assets/4e5bf94b-2b61-4dbe-9cc4-c6efc2aba717" />
 
 接着这个Reactor主线程就专门会负责跟这个Producer按照TCP协议规定的一系列步骤和规范，建立好一个长连接。而在Broker中，会使用一个叫SocketChannel的对象来代表跟Producer之间建立的这个长连接。
 
@@ -669,7 +669,7 @@ Producer里会有一个SocketChannel，Broker里也会有一个SocketChannel，�
 
 既然Producer和Broker之间已经通过SocketChannel维持了一个长连接了，接着Producer就会通过这个SocketChannel去发送消息给Broker。
 
-<img width="2150" height="696" alt="image" src="https://github.com/user-attachments/assets/87e868e4-be19-48f7-bb7c-434a4e0a77b5" />
+<img width="100%" height="100%" alt="image20" src="https://github.com/user-attachments/assets/87e868e4-be19-48f7-bb7c-434a4e0a77b5" />
 
 <br>
 
@@ -679,7 +679,7 @@ Producer里会有一个SocketChannel，Broker里也会有一个SocketChannel，�
 
 从SocketChannel里获取消息的工作，会通过一个叫Reactor线程池(默认有3个线程)来负责。Reactor主线程建立好的每个连接SocketChannel，都会交给这个Reactor线程池里的其中一个线程去监听请求。有了Reactor线程池后，就可以让Producer发送请求过来了。Producer发送一个消息到达Broker里的SocketChannel，此时Reactor线程池里的一个线程就会监听到该SocketChannel中有请求到达。
 
-<img width="2162" height="628" alt="image" src="https://github.com/user-attachments/assets/92c0fb0b-0a8d-4fb6-a9cb-af22e3bb39b4" />
+<img width="100%" height="100%" alt="image21" src="https://github.com/user-attachments/assets/92c0fb0b-0a8d-4fb6-a9cb-af22e3bb39b4" />
 
 <br>
 
@@ -689,7 +689,7 @@ Producer里会有一个SocketChannel，Broker里也会有一个SocketChannel，�
 
 这些准备工作和预处理会由一个叫Worker线程池(默认有8个线程)来负责。也就是Reactor线程从SocketChannel中读取出一个请求后，就会交给Worker线程池中的一个线程进行处理，来完成上述一系列的准备工作和预处理。
 
-<img width="2164" height="1110" alt="image" src="https://github.com/user-attachments/assets/c3b9a9e8-f07d-4382-a3f3-313d9e7483d4" />
+<img width="100%" height="100%" alt="image22" src="https://github.com/user-attachments/assets/c3b9a9e8-f07d-4382-a3f3-313d9e7483d4" />
 
 <br>
 
@@ -701,7 +701,7 @@ Producer里会有一个SocketChannel，Broker里也会有一个SocketChannel，�
 
 所以，此时就需要继续把经过一系列预处理过后的请求转交给业务线程池。比如把发送消息的请求转交给SendMessage线程池，这个SendMessage线程数是可以配置的，配置得越多，处理发送消息请求的吞吐量就越高。
 
-<img width="2170" height="1124" alt="image" src="https://github.com/user-attachments/assets/991c13c7-e468-4cdb-8674-17ef8f655cc5" />
+<img width="100%" height="100%" alt="image23" src="https://github.com/user-attachments/assets/991c13c7-e468-4cdb-8674-17ef8f655cc5" />
 
 <br>
 
@@ -763,7 +763,7 @@ Broker中大量使用了mmap技术去实现CommitLog这种大磁盘文件的高�
 
 首先从磁盘上把数据读取到内核IO缓冲区，然后从内核IO缓存区里读取到用户进程私有空间，程序才能拿到该文件里的数据。
 
-<img width="986" height="650" alt="image" src="https://github.com/user-attachments/assets/f3f3c50a-0cc4-425b-bcee-a7bc631d6cdd" />
+<img width="100%" height="100%" alt="image24" src="https://github.com/user-attachments/assets/f3f3c50a-0cc4-425b-bcee-a7bc631d6cdd" />
 
 为了读取磁盘文件里的数据，发生了两次数据拷贝。这就是普通IO操作的一个弊端，必然涉及到两次数据拷贝操作，这对磁盘读写性能是有影响的。
 
@@ -771,7 +771,7 @@ Broker中大量使用了mmap技术去实现CommitLog这种大磁盘文件的高�
 
 这就是普通IO的问题：有两次数据拷贝。
 
-<img width="1020" height="636" alt="image" src="https://github.com/user-attachments/assets/7e545214-b34b-4361-aaaa-41947e9ba77a" />
+<img width="100%" height="100%" alt="image25" src="https://github.com/user-attachments/assets/7e545214-b34b-4361-aaaa-41947e9ba77a" />
 
 <br>
 
@@ -783,7 +783,7 @@ RocketMQ底层对CommitLog、ConsumeQueue之类的磁盘文件的读写操作，
 
 **关于内存映射：** 可能有人会误以为是直接把那些磁盘文件里的数据读取到内存中，但这并不完全正确。因为刚开始建立映射时，并没有任何的数据拷贝操作，其实磁盘文件还是停留在那里，只不过map()方法把物理上的磁盘文件的一些地址和用户进程私有空间的一些虚拟内存地址进行了一个映射。
 
-<img width="896" height="462" alt="image" src="https://github.com/user-attachments/assets/67502e36-b550-4fd3-b2c2-0eac3491df75" />
+<img width="100%" height="100%" alt="image26" src="https://github.com/user-attachments/assets/67502e36-b550-4fd3-b2c2-0eac3491df75" />
 
 这个地址映射的过程，就是JDK NIO包下的MappedByteBuffer.map()方法做的事情，其底层就是基于mmap技术实现的。另外这个mmap技术在进行文件映射时，一般有大小限制，在1.5GB\~2GB之间。所以RocketMQ才让CommitLog单个文件在1GB、ConsumeQueue文件在5.72MB，不会太大。这样限制了RocketMQ底层文件的大小后，就可以在进行文件读写时，很方便的进行内存映射了。
 
@@ -791,7 +791,7 @@ RocketMQ底层对CommitLog、ConsumeQueue之类的磁盘文件的读写操作，
 
 **关于PageCache：** 实际上PageCache在这里就是对应于虚拟内存。
 
-<img width="1100" height="508" alt="image" src="https://github.com/user-attachments/assets/904e2e42-3b47-4405-a54d-19c621dea043" />
+<img width="100%" height="100%" alt="image27" src="https://github.com/user-attachments/assets/904e2e42-3b47-4405-a54d-19c621dea043" />
 
 <br>
 
@@ -805,7 +805,7 @@ RocketMQ底层对CommitLog、ConsumeQueue之类的磁盘文件的读写操作，
 
 然后过一段时间后，由OS的线程异步刷入磁盘中。
 
-<img width="1320" height="1198" alt="image" src="https://github.com/user-attachments/assets/87eb05d4-2cb2-4d65-8906-13452d496b76" />
+<img width="100%" height="100%" alt="image28" src="https://github.com/user-attachments/assets/87eb05d4-2cb2-4d65-8906-13452d496b76" />
 
 从上图可以看出，只有一次数据拷贝的过程，也就是从PageCache里拷贝到磁盘文件。这个就是使用mmap技术后，相比于普通IO的一个性能优化。
 
@@ -817,7 +817,7 @@ RocketMQ底层对CommitLog、ConsumeQueue之类的磁盘文件的读写操作，
 
 可见在读取数据时，其实也只发生了一次拷贝，而不是两次拷贝，所以这个性能相比于普通IO又提高了。
 
-<img width="1320" height="1182" alt="image" src="https://github.com/user-attachments/assets/74415f18-0433-40b9-b7ef-7b3097322995" />
+<img width="100%" height="100%" alt="image29" src="https://github.com/user-attachments/assets/74415f18-0433-40b9-b7ef-7b3097322995" />
 
 <br>
 
@@ -847,4 +847,4 @@ Broker在读写磁盘时，会大量把mmap技术和PageCache技术结合起来�
 
 RocketMQ的一些底层原理：MessageQueue的概念、在Broker上的分布式存储、Producer写入消息的底层原理、Broker的数据存储机制、Broker高可用架构的实现原理、Consumer的底层原理、基于Broker读写分离架构读取消息的原理。
 
-<img width="2788" height="1610" alt="image" src="https://github.com/user-attachments/assets/e506e9a2-982c-4a47-aad1-433bc2a862bb" />
+<img width="100%" height="100%" alt="image30" src="https://github.com/user-attachments/assets/e506e9a2-982c-4a47-aad1-433bc2a862bb" />
