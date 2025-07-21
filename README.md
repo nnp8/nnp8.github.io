@@ -2,4 +2,4 @@
 分享技术积累, 欢迎转载
 
 RocketMQ系列：
-- [RocketMQ原理—1.RocketMQ整体运行原理](./rocketmq/RocketMQ原理—1.RocketMQ整体运行原理.md)
+- [RocketMQ原理—1.RocketMQ整体运行原理](./RocketMQ/RocketMQ原理—1.RocketMQ整体运行原理.md)
