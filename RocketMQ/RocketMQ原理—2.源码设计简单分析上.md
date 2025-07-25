@@ -55,7 +55,7 @@ NameServer会通过rocketmq-master源码中distribution/bin目录下的mqnamesrv
 
 所以，启动NameServer的过程如下图示：
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/ad3b5eed1b6b43ae999cbdb182ee1b4c~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754009284&x-orig-sign=KAVKntKNHTZLLyzklUowd3wrDI4%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/518349f8-1ca7-478c-a540-0286458ec0ed" />
 
 <br>
 
@@ -111,7 +111,7 @@ NameServer会通过rocketmq-master源码中distribution/bin目录下的mqnamesrv
 
 这行代码就是在创建一个NamesrvController类，这个类是NameServer中的一个核心组件。由于NameServer需要接收Broker发送过来的要把自己注册到NameServer上的请求(因为知道有哪些Broker和管理Broker)，以及需要接收客户端发送过来的从NameServer拉取元数据的请求(因为客户端需要知道一个Topic的MessageQueue都在哪些Broker上)，所以才需要在NameServer中创建NamesrvController这个类专门用来接收Broker和客户端的网络请求。如下图示，NamesrvController组件是NameServer中的核心组件，用来负责接受网络请求的。
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/730d19b055e54c009c12440a7be9c008~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754009284&x-orig-sign=FqfcKIPjnYTMhHIM2MIhU8pSEnI%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/31355e30-18d6-4ced-84ec-00520995c0d9" />
 
 <br>
 
@@ -206,7 +206,7 @@ NamesrvStartup的createNamesrvController()方法会创建出NamesrvController这
 
 在这里也能知道NameServer对外接收Broker和客户端的网络请求时，是基于Netty来实现网络服务器的，而且可知NameServer默认的监听请求端口号就是9876。
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/ed59055fb7cc4d1db59079677a841f0d~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754009284&x-orig-sign=TJ6%2BmuK6C7Qqn7Q1mtgxVbYKgZY%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/4feef18a-f2a4-4a2a-80a8-f16345adebdc" />
 
 NameServer的两个配置类如下：
 
@@ -344,7 +344,7 @@ NameServer的两个配置类如下：
 
 所以，NameServer启动时，刚开始就是在初始化和解析NameServerConfig、NettyServerConfig相关的配置信息。
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/9ec9d9398f804253950c7198dff61770~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754009284&x-orig-sign=mdvlyp7UXtF5N48cEh2e3LsqEr0%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/5ea6cef7-46de-4523-a9ad-278719363ef3" />
 
 由于NameServer刚启动会初始化和解析一些核心配置信息，尤其是NettyServer的一些网络配置信息，所以初始化配置信息后，会打印如下启动日志：
 
@@ -385,7 +385,7 @@ NameServer的两个配置类如下：
 
 这里直接创建了NamesrvController组件，同时传递NamesrvConfig和NettyServerConfig这两个配置类给它。如下图示：
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/71db27e183bb44338079cce4630f598b~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754009284&x-orig-sign=%2B5gFp4mv28ERM1mRU3%2BB%2F5t%2Bd7g%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/ce4630a8-204e-423d-a9dc-dc238e600c77" />
 
 <br>
 
@@ -407,7 +407,7 @@ NameServer的两个配置类如下：
 
 NameServer架构图如下：
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/8ed58a2addb846ac84abac23da7ca9cf~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754009284&x-orig-sign=ptaATPSROeQkKn3wHbDPIWM%2Bafg%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/cd5a9d32-bbcd-4465-8e44-231c68e405db" />
 
 由前面分析可知：NameServer启动时首先会解析配置文件，然后初始化NamesrvConfig和NettyServerConfig两个配置类，接着基于这两个配置类构建出NamesrvController组件。
 
@@ -518,7 +518,7 @@ NamesrvStartup的start()方法如下，首先会执行NamesrvController的initia
         ...
     }
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/9ff0b264570c4c9389c0adeb825e5e25~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754009284&x-orig-sign=tR5Q4sOgc9XpBg1TuyEIj4bHB04%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/03035a48-cb82-4b58-ad70-a578b3fdc0b7" />
 
 <br>
 
@@ -538,7 +538,7 @@ NettyRemotingServer构造方法的代码如下：
 
 其中便通过Netty的ServerBootstrap类，创建一个Netty网络服务器。NettyRemotingServer是RocketMQ开发的一个网络服务器组件，它会基于Netty提供的ServerBootstrap类来实现一个Netty网络服务器。
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/f615db0159a0417188111f0cd2d9c63c~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754009284&x-orig-sign=QoGxcxpW0hgiIDL5BvQPuaT2ZzQ%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/66aca29a-b36c-4a75-baca-99af789e2cc1" />
 
 <br>
 
@@ -755,7 +755,7 @@ NettyRemotingServer.start()方法的源码如下：
 
 至此Netty网络服务器便启动了，开始监听端口号9876，如下图示：
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/0b5995bbc4c44603b167519ff350c09f~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754009284&x-orig-sign=Edqgbz1ZkJXZQ%2Fo1Wk131yq7EHo%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/28ff9894-4008-4366-9509-3ff656faa212" />
 
 <br>
 
@@ -785,7 +785,7 @@ NameServer启动的核心就是：基于Netty实现了一个网络服务器，�
 
 如下图示：当NameServer启动后，有一个Netty网络服务器监听9876端口，此时Broker和客户端就可以与NameServer建立长连接进行网络通信。
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/db1fc640553c485fa070d7d328862cad~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754009284&x-orig-sign=2LzheVF%2BVr4xuMAMPGMT49t7A%2BI%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/8abdd33a-b6e8-4c23-a05b-014948b865b6" />
 
 <br>
 
@@ -867,7 +867,7 @@ BrokerStartup的createBrokerContorller()方法源码如下：首先会通过Serv
 
 Broker的几个配置组件如下图示：
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/99ac11b759704f05931153933199afa1~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754009284&x-orig-sign=OQrIE5zZ9QlRUiMT%2BSG9qKOUOBc%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/e7c73e48-c069-4135-aea5-4fa50358a548" />
 
 <br>
 
@@ -992,7 +992,7 @@ Broker的几个配置组件如下图示：
 
 上面介绍了Broker在启动时，首先会执行BrokerStartup的createBrokerController()方法。在这个方法里，会初始化以及解析Broker的4个配置组件，如下图示。
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/4c92bf127073412da2d67796d071d99e~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754009289&x-orig-sign=CwDUYNgpE8aY0VECC1gC1A3mVAQ%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/4ab94f90-38c1-44b6-b1f1-e4f5ca66777f" />
 
 这4个配置组件在初始化时，实际上就是用默认的配置参数值以及配置文件里的配置参数值、包括命令行传递的配置参数值，填充到配置组件中。然后在后续Broker运行的过程中，各种行为都会根据这些配置组件里的配置参数值来决定。
 
@@ -1032,7 +1032,7 @@ BrokerController可以认为是Broker管理控制组件，也就是这个组件�
 
 Broker、BrokerStartup、BrokerController之间的关系如下图示：
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/b55540ff090f4cca87618f74fb35b372~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754009289&x-orig-sign=ptADnbYqhfWS2eMqiH8CstBEqdA%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/47871470-63c5-41b8-a418-cceb9b3ce3f3" />
 
 总结：首先Broker不是一个代码组件，而是用mqbroker脚本启动的JVM进程。然后BrokerStartup是用来启动JVM进程的拥有一个main()方法的类，它是一个启动组件，负责初始化4个配置组件，并基于这4个配置组件去启动BrokerControler这个管理控制组件。接着，在Broker这个JVM进程的运行期间，都是由BrokerController管理控制组件去管理Broker的请求处理、后台线程以及磁盘数据的。
 
@@ -1103,7 +1103,7 @@ Broker、BrokerStartup、BrokerController之间的关系如下图示：
 
 BrokerController内部有一系列的功能性组件，以及大量的后台线程池，如下图示：
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/42644f4785d04790acb6e045e2770aeb~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754009289&x-orig-sign=xfNG7WVqXM%2BMm5sufmrCWbWnFU4%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/fcd2ad0a-ccf7-4a98-81e3-7716c00f8cc6" />
 
 <br>
 
@@ -1119,7 +1119,7 @@ BrokerController内部有一系列的功能性组件，以及大量的后台线�
 
 现已知Broker作为一个JVM进程启动后，会由BrokerStartup这个启动组件先初始化4个配置组件，然后再通过这4个配置组件创建BrokerController这个管理控制组件，在BrokerController管控组件中会包含大量的核心功能组件和后台线程池。如下图示：
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/72012332a9b444b48a4816b009f706e9~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754009289&x-orig-sign=aQvHqFBfKVY%2FuJi81eu4%2BRrWqLI%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/d8919754-b7b5-4a9f-a3e8-c399ac38c157" />
 
 当创建好BrokerController以及里面的核心功能组件和后台线程池之后，接着还要初始化BrokerController。
 
@@ -1319,7 +1319,7 @@ BrokerController的initialize()方法的部分源码：
 
 于是，在如下图中加入两类线程池：一类线程池是用来处理客户端发送过来的请求，另一类线程池是执行后台定时调度任务。
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/ac51a1ab97a54700811dd43251d6d476~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754009289&x-orig-sign=RbbD30SAY1%2BCZSRrWS7VgSQyiXM%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/f0b47703-a522-4f6c-a890-458fb9c72b51" />
 
 BrokerController的initialize()方法的剩余源码：
 
@@ -1391,7 +1391,7 @@ BrokerController的启动会完成Netty服务器的启动，这样Broker才可�
 
 假设现在BrokerController已经完成初始化了，也就是BrokerController中用于实现各种功能的核心组件都已初始化完毕，然后负责接收请求的Netty服务器也初始化完毕，同时负责处理请求的线程池以及执行定时调度任务的线程池也初始化完毕。如下图示：
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/25073d66dd9249b4aeb4767e9003b90c~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754009289&x-orig-sign=XUsBnPl%2BGatCe4aZtVlYbCHGeis%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/e58b8b22-a571-46cd-85a0-6e5f61083796" />
 
 这时就要对BrokerContorller执行启动的逻辑了，让它里面的一些功能组件完成启动时需要执行的一些工作。比如完成Netty服务器的启动，让Netty服务器去监听一个端口号来接收客户端发来的请求。
 
@@ -1492,7 +1492,7 @@ BrokerContorller的start()方法源码，如下所示：
 
 上述源码的核心就是：启动Netty服务器来接收网络请求、启动BrokerOuterAPI组件让其基于Netty客户端将请求发送出去、同时启动一个线程向NameServer进行注册。
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/4d0bd6002b2740db8427c62ae90dbd52~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754009289&x-orig-sign=Au1OgeSDsVHnd6EwZo9XEEZ7LMg%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/9bb41c89-dfb2-4463-a933-3e124ca74f16" />
 
 由于这里关注的是系统运行的主要流程和逻辑，所以不会去看BrokerOuterAPI、RemotingServer、FileWatchService、MessageStore这些组件的源码细节。
 
@@ -1528,7 +1528,7 @@ BrokerContorller的start()方法源码，如下所示：
 
 前面介绍了BrokerController启动的过程，其本质就是启动Netty服务器去接收网络请求，以及启动一些核心功能组件、启动一些处理请求的线程池、启动一些执行定时调度任务的后台线程。如下图示：
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/f64f90eb3ce240979b62379dd7c2dbce~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754009289&x-orig-sign=g5%2BuC5Qr%2Frlf6wDBqD8a32ZMerk%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/c469fa71-041d-4cb3-bc89-38ebb875e321" />
 
 当然最为关键的，就是BrokerController将自己注册到NameServer。这个将自己注册到NameServer的源码入口，就在BrokerController的start()方法中，如下所示：
 
@@ -1628,7 +1628,7 @@ BrokerContorller的start()方法源码，如下所示：
 
 上述代码实际上就是通过BrokerOuterAPI发送网络请求给所有NameServer，把这个Broker注册上去。
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/0dab9e28306f4683be6ceff013804954~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754009289&x-orig-sign=L0BvcWsggc9%2FSr%2BUgZnuBiost5Y%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/c9a464bf-9437-4134-a0ee-0a9ba60cc94d" />
 
 <br>
 
@@ -1701,7 +1701,7 @@ BrokerOuterAPI的registerBrokerAll()方法，便会向所有的NameServer发起�
 
 registerBrokerAll()方法，首先会封装好请求头RequestHeader和请求体RequestBody，从而构成一个请求。然后通过底层的NettyClient把这个注册请求发送到NameServer上。
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/8df4d4f2358b41eea8553f4a4c2c6948~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754009289&x-orig-sign=VKsjG4QQFZkolf6qUD%2FFQZSmy0U%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/10936c96-291e-4cc0-9876-03b02f0dff1a" />
 
 <br>
 
@@ -1773,7 +1773,7 @@ BrokerOuterAPI的registerBroker()方法如下：
 
 由上述代码可知，注册请求最终是基于NettyClient组件发送给NameServer的。
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/5baba5f403114065aef9b12994019200~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754009289&x-orig-sign=aWZ51A%2FqsxNhKaBagl05ErLGV7M%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/df7f60ee-c2fe-4201-a5f3-49ce8bd4c01c" />
 
 <br>
 
@@ -1827,7 +1827,7 @@ BrokerOuterAPI的registerBroker()方法如下：
 
 由上述代码可知，可以在下图中加入Channel来表示出Broker和NameServer之间的一个网络连接。然后通过这个Channel，Broker就可以发送实际的网络请求给NameServer了。
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/8d9a8d01527441bda59ba3e9baf56e75~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754009289&x-orig-sign=hy7ozwpynq9173G1%2F2PmpCNbjIs%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/e1f46a52-18d8-437a-bd70-590359a83f79" />
 
 <br>
 
@@ -1973,7 +1973,7 @@ BrokerOuterAPI的registerBroker()方法如下：
 
 前面介绍完了Broker启动时是如何通过BrokerOuterAPI发送注册请求到NameServer去的，如下图示：
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/8ad752d765584dde8fd816b075598c9e~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754009289&x-orig-sign=TpmxX8CCpn1yeZIjTH7u62JVVC0%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/c8d241fc-9b7e-4a5b-a6a4-bf22f58c2618" />
 
 接下来介绍NameServer接收到这个注册请求后是如何进行处理的，这里会涉及Netty网络通信相关的内容。
 
@@ -2013,7 +2013,7 @@ BrokerOuterAPI的registerBroker()方法如下：
 
 由上述源码可知，下图NameServer中的NettyServer会用于接收网络请求，然后交给DefaultRequestProcessor这个请求处理组件来进行处理。
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/36ce8e36af954bb68314af56edd93655~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754009289&x-orig-sign=17ce2k9%2FWMAsJDQY%2FCWk8M%2FndZA%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/991b0e18-24ce-409d-9ac9-960541641313" />
 
 所以如果想要知道Broker的注册请求是如何被NameServer进行处理的，直接看DefaultRequestProcessor中的代码即可。下面是DefaultRequestProcessor这个类的一些源码：
 
@@ -2105,7 +2105,7 @@ BrokerOuterAPI的registerBroker()方法如下：
 
 根据上述代码，在下图中添加RouteInfoManager这个路由数据管理组件，实际上Broker注册就是通过它来实现的。
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/06a483db64e045828ae4099e776d82ab~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754009289&x-orig-sign=zHYGjrB5tZ3PCZslNeykL1DcIFM%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/57d35884-45b9-4b8f-8bdd-d939e9f10971" />
 
 而RouteInfoManager的注册Broker的方法，会把一个Broker机器的数据放入RouteInfoManager中维护的路由数据表里。其实现思路就是用一些Map类的数据结构，去存放Broker的核心路由数据：ClusterName、BrokerId、BrokerName等。而且在更新时，会基于Java并发包下的ReadWriteLock进行读写锁加锁，因为在这里更新那么多的内存Map数据结构，必须要加一个写锁，此时只能有一个线程来更新它们才行。
 
@@ -2123,7 +2123,7 @@ BrokerOuterAPI的registerBroker()方法如下：
 
 NameServer核心就是基于Netty服务器来接收Broker注册请求，然后交给DefaultRequestProcessor这个请求处理组件来处理Broker注册请求。而真正的Broker注册逻辑是放在RouteInfoManager这个路由数据管理组件里来进行实现的，最终Broker路由数据都会存放在RouteInfoManager内部的一些Map数据结构组成的路由数据表中。
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/a6e8d77d931649d7981047b69d6261d4~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754009289&x-orig-sign=Wc2ZXEe34eOtisY1%2BsLCdgknKWQ%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/fd4c39e4-3730-452c-a205-c9953354aa20" />
 
 <br>
 
@@ -2178,7 +2178,7 @@ NameServer核心就是基于Netty服务器来接收Broker注册请求，然后�
 
 所以默认情况下，第一次发送注册请求就是在进行注册，此时会把Broker路由数据放入到NameServer的RouteInfoManager的路由数据表里去。但是后续每隔30s都会发送一次注册请求，这些后续定时发送的注册请求，其实本质上就是Broker发送心跳给NameServer。
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/79b59d7ed1eb40dcbe659a2eb875d902~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754009289&x-orig-sign=I%2BQ1C19%2BNRqJQvzf1Hml5fTFK2o%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/b9ca225a-a79c-428d-bf1d-c1be57dc5a5c" />
 
 那么后续每隔30s，Broker就会发送一次注册请求，作为心跳来发送给NameServer时，NameServer对后续重复发送过来的注册请求(也就是心跳)是如何进行处理的呢？接下来看RouteInfoManager的注册Broker的源码：
 
@@ -2286,7 +2286,7 @@ NameServer核心就是基于Netty服务器来接收Broker注册请求，然后�
 
 如下图示，当Broker每隔30s发送一个注册请求作为心跳时，RouteInfoManager路由数据管理组件就会进行心跳时间的刷新处理。
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/5493473fc14c43afba735ab5fed7dece~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754009289&x-orig-sign=JUhojmBQt81KSYgcHfxKazI7yaI%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/8e9459f5-77a3-43e7-af68-7abbaf1b7a99" />
 
 假设Broker已经挂了或者故障了，隔了很久都没有发送每隔30s一次的注册请求，那么此时NameServer是如何感知Broker已经挂掉呢？
 
