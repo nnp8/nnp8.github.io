@@ -36,6 +36,8 @@
 
 区别三：后者引入了MigrationRuleListener、MigrationRuleHandler、MigrationInvoker，引入DynamicDirectory代替RegistryDirectory。
 
+<br>
+
 **2.Dubbo服务的基本流程和启动入口**
 
 **(1)Dubbo服务的基本流程**
@@ -44,9 +46,13 @@
 
 **(3)Consumer启动入口**
 
+<br>
+
 **(1)Dubbo服务的基本流程**
 
 ![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/6c790af1a6a9498c9e6d4d91c3695461~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754972248&x-orig-sign=3RvxJBgfgicIdnoifoWiLq4JUr8%3D)[]()
+
+<br>
 
 **(2)Provider启动入口**
 
@@ -87,6 +93,8 @@
             new CountDownLatch(1).await();
         }
     }
+    
+<br>
 
 **(3)Consumer启动入口**
 
@@ -118,6 +126,8 @@
             Thread.sleep(10000000L);
         }
     }
+    
+<br>
 
 **3.Dubbo服务发布的主流程**
 
@@ -172,6 +182,8 @@ ServiceConfig的export()方法在进行服务发布时，首先会初始化相�
         }
         ...
     }
+
+<br>
 
 **4.服务发布时执行相关组件的初始化**
 
@@ -380,6 +392,8 @@ ServiceConfig的export()方法在进行服务发布时，首先会初始化相�
         ...
     }
 
+<br>
+
 **5.服务发布时执行的服务实例刷新操作**
 
 完成相关组件的初始化后，便会调用ServiceConfig的refresh()方法执行服务实例的刷新操作。
@@ -552,6 +566,8 @@ ServiceConfig的export()方法在进行服务发布时，首先会初始化相�
 
 ![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/a87bd1c23e4944d8a67ef53ef653798e~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754972248&x-orig-sign=23syQV%2BOwIjcmdVFGN%2FzR0C2CYI%3D)[]()
 
+<br>
+
 **6.服务发布时执行的服务实例初始化操作**
 
     public class ServiceConfig<T> extends ServiceConfigBase<T> {
@@ -592,6 +608,8 @@ ServiceConfig的export()方法在进行服务发布时，首先会初始化相�
 
 ![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/074dfc79e7ac40a0b4642b4c542d9a18~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754972248&x-orig-sign=POO760fnNnMlPq5zxU8TPtnJtfg%3D)[]()
 
+<br>
+
 **7.服务发布时执行的服务实例发布操作**
 
 首先调用ServiceConfig的doExportUrls()方法发布服务，然后再调用其exported()方法进行服务发布后的处理，比如打印日志和回调监听器。
@@ -623,6 +641,8 @@ ServiceConfig的export()方法在进行服务发布时，首先会初始化相�
         }
         ...
     }
+
+<br>
 
 **8.执行服务实例发布操作时的主流程**
 
@@ -805,6 +825,8 @@ ServiceConfig的export()方法在进行服务发布时，首先会初始化相�
         }
         ...
     }
+
+<br>
 
 **9.服务发布过程中ProxyFactory生成Invoker**
 
@@ -1012,11 +1034,15 @@ ServiceConfig的export()方法在进行服务发布时，首先会初始化相�
         ...
     }
 
+<br>
+
 **10.服务发布过程中Protocol组件发布Invoker**
 
 **(1)Protocol协议接口**
 
 **(2)Protocol组件发布Invoker**
+
+<br>
 
 **(1)Protocol协议接口**
 
@@ -1048,6 +1074,8 @@ ServiceConfig的export()方法在进行服务发布时，首先会初始化相�
     }
 
 ![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/e461a95670634358942a1f70c49a1e0a~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754972248&x-orig-sign=G6GRQv3khDiEE6bkP2OXTgP5saw%3D)[]()
+
+<br>
 
 **(2)Protocol组件发布Invoker**
 
@@ -1439,6 +1467,8 @@ RegistryProtocol的export()方法被远程发布调用的时候，会调用到Du
         }
     }
 
+<br>
+
 **11.服务发布过程中NettyServer的构造流程**
 
     public abstract class AbstractServer extends AbstractEndpoint implements RemotingServer {
@@ -1578,11 +1608,15 @@ RegistryProtocol的export()方法被远程发布调用的时候，会调用到Du
         ...
     }
 
+<br>
+
 **12.服务发布过程中RegistryProtocol的服务注册**
 
 **(1)首先注册service-discovery-registry的URL**
 
 **(2)然后注册registry的URL**
+
+<br>
 
 服务发布过程中需要进行注册的URL有两个：
 
@@ -1590,6 +1624,8 @@ RegistryProtocol的export()方法被远程发布调用的时候，会调用到Du
     registry://127.0.0.1:2181/org.apache.dubbo.registry.RegistryService?application=dubbo-demo-api-provider&dubbo=2.0.2&pid=989&registry=zookeeper&timestamp=1724302222103
 
 ![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/b821b8cb6cb3461aa4035346cdb4d098~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754972248&x-orig-sign=N9gZKgSRxU9UwRES75c2w0Gors4%3D)[]()
+
+<br>
 
 **(1)首先注册service-discovery-registry的URL**
 
@@ -1863,6 +1899,8 @@ ZookeeperServiceDiscovery.doRegister()处理的URL注册其实就是在本地进
         ...
     }
 
+<br>
+
 **(2)然后注册registry的URL**
 
 ![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/9e140b65953b4ed697e66ee256013e93~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754972248&x-orig-sign=ap0GPjvZrydTUafeSG1%2BYAFSRG0%3D)[]()
@@ -2101,6 +2139,8 @@ ZooKeeperRegistry.doRegister()处理的URL注册其实就是往注册中心注�
     }
 
 ![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/27c7b4144b624096afa21b8f4b9431e2~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754972248&x-orig-sign=mRrT4R3ieQ8oItFVZ%2FCJkNSre1E%3D)[]()
+
+<br>
 
 **13.Dubbo服务发布的完整流程总结**
 
