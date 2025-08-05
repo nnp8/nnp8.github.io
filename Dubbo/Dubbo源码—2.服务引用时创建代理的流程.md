@@ -1,3 +1,5 @@
+# Dubbo源码—2.服务引用时创建代理的流程
+
 **大纲**
 
 **1.Dubbo服务引用的主流程**
@@ -1031,7 +1033,7 @@ MigrationRuleHandler的refreshInvoker()方法会调用MigrationInvoker的refresh
         }
     }
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/21196f6e03e645eeadb822d9ac8b4d10~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1755008196&x-orig-sign=4y5RLQidHh5A%2Bk4V%2FhJwLbnTYkY%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/bce84de6-768a-4ae4-adb2-7432ab5d05c4" />
 
 <br>
 
@@ -1225,7 +1227,7 @@ MigrationRuleHandler的refreshInvoker()方法会调用MigrationInvoker的refresh
 
 RegistryProtocol的doCreateInvoker()方法最终返回的是封装了DynamicDirectory和FailoverClusterInvoker的MockClusterInvoker，而MockClusterInvoker又会包含在MigrationInvoker里面。
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/b9615cd4acf44cb29f7aa32732754078~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1755008196&x-orig-sign=DSVZ4LaIFi0Lnt1AS227FP7k%2FkU%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/1be4236d-59c9-4fa0-a34c-1a60e0304a03" />
 
     //-> MigrationRuleListener.onRefer()
     //-> MigrationRuleHandler.doMigrate()
@@ -1922,7 +1924,7 @@ ReferenceConfig的createProxy()方法的最后一行代码，会基于Invoker创
         }
     }
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/310e207c1ceb46f9ba832ea7a0ba0933~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1755008196&x-orig-sign=Q0GuEf%2Be0m%2BTm4vteFbXpoAuPz8%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/dba21c9c-5c91-4989-9871-1530119b7a92" />
 
 <br>
 
@@ -2099,4 +2101,4 @@ ReferenceConfig的createProxy()方法的最后一行代码，会基于Invoker创
         }
     }
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/4c668d1962064baea5187a524a3a46ee~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1755008196&x-orig-sign=YKucmsg%2BdI4kgccJNoxiPMuSk2s%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/86239b69-5d2e-42f3-a381-a51e9263cf24" />
