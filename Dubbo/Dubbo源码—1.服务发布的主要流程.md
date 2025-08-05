@@ -50,7 +50,7 @@
 
 **(1)Dubbo服务的基本流程**
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/6c790af1a6a9498c9e6d4d91c3695461~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754972248&x-orig-sign=3RvxJBgfgicIdnoifoWiLq4JUr8%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/52bd7723-faa2-43ed-b817-38efc2142aa6" />
 
 <br>
 
@@ -284,7 +284,7 @@ ServiceConfig的export()方法在进行服务发布时，首先会初始化相�
         ...
     }
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/fd518d168cbc46d599ca485a498de885~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754972248&x-orig-sign=1lDv8tRkyCCGYRMcmQdswZg4CKw%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/68fceec6-8243-400f-a785-1fa156185c70" />
 
     public class DefaultApplicationDeployer extends AbstractDeployer<ApplicationModel> implements ApplicationDeployer {
         ...
@@ -564,7 +564,7 @@ ServiceConfig的export()方法在进行服务发布时，首先会初始化相�
         ...
     }
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/a87bd1c23e4944d8a67ef53ef653798e~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754972248&x-orig-sign=23syQV%2BOwIjcmdVFGN%2FzR0C2CYI%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/20e2e56d-3711-458b-ba74-67b75122ee07" />
 
 <br>
 
@@ -606,7 +606,7 @@ ServiceConfig的export()方法在进行服务发布时，首先会初始化相�
         ...
     }
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/074dfc79e7ac40a0b4642b4c542d9a18~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754972248&x-orig-sign=POO760fnNnMlPq5zxU8TPtnJtfg%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/42f6e04b-9a8f-44a4-b5f0-8d7dbad7c112" />
 
 <br>
 
@@ -648,7 +648,7 @@ ServiceConfig的export()方法在进行服务发布时，首先会初始化相�
 
 首先通过ScopeModel组件体系获取服务数据存储组件，然后将要发布的服务注册到服务数据存储组件里，接着把相关信息封装成一个服务提供者，并将该服务提供者也注册到服务数据存储组件中，然后生成注册的URL，最后根据协议和生成的注册的URL来发布服务。
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/b98de51b0e2949a4bdc599e66678ad1e~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754972248&x-orig-sign=6s5pgq%2FZeb8FBol%2B8jZQijUL5mw%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/6fef79bd-cf20-4a09-9b4e-513c5ab1b168" />
 
     public class ServiceConfig<T> extends ServiceConfigBase<T> {
         ...  
@@ -830,7 +830,7 @@ ServiceConfig的export()方法在进行服务发布时，首先会初始化相�
 
 **9.服务发布过程中ProxyFactory生成Invoker**
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/3dafabddd5bb4d95a400d8b1348bf881~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754972248&x-orig-sign=LSBDmEqkiQ%2FSYw5QNP5NclFPDOM%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/e36cab55-3e23-4e1e-a641-4ff98fd3502a" />
 
     public class ServiceConfig<T> extends ServiceConfigBase<T> {
         ...
@@ -1073,7 +1073,7 @@ ServiceConfig的export()方法在进行服务发布时，首先会初始化相�
         }
     }
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/e461a95670634358942a1f70c49a1e0a~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754972248&x-orig-sign=G6GRQv3khDiEE6bkP2OXTgP5saw%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/62b2a490-62a3-4beb-9007-7408c79dfb15" />
 
 <br>
 
@@ -1083,7 +1083,7 @@ ServiceConfig的export()方法在进行服务发布时，首先会初始化相�
 
 RegistryProtocol的export()方法被远程发布调用的时候，会调用到DubboProtocol的export()方法，并最终调用到HeaderExchanger的bind()方法执行NettyTransporter的bind()方法构建Netty服务器。
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/ad2ab1560ac14991981c72dc57e3abdf~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754972248&x-orig-sign=DvMD1LBiY%2BGi5k8kd149HK1zpxo%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/d49d94db-28b1-40fd-a99c-777bdbcc735a" />
 
     public class ServiceConfig<T> extends ServiceConfigBase<T> {
         ...
@@ -1623,13 +1623,13 @@ RegistryProtocol的export()方法被远程发布调用的时候，会调用到Du
     service-discovery-registry://127.0.0.1:2181/org.apache.dubbo.registry.RegistryService?application=dubbo-demo-api-provider&dubbo=2.0.2&pid=989&registry=zookeeper&timestamp=1724302222103
     registry://127.0.0.1:2181/org.apache.dubbo.registry.RegistryService?application=dubbo-demo-api-provider&dubbo=2.0.2&pid=989&registry=zookeeper&timestamp=1724302222103
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/b821b8cb6cb3461aa4035346cdb4d098~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754972248&x-orig-sign=N9gZKgSRxU9UwRES75c2w0Gors4%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/c12dd2a5-99ab-43af-aee6-c9c890486f17" />
 
 <br>
 
 **(1)首先注册service-discovery-registry的URL**
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/3031b0e40af54618a402e70264b6b225~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754972248&x-orig-sign=Kgh4CMBWW6buTW2kUW%2BO4kS4PU8%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/7303f638-d798-4116-8545-2a806a952185" />
 
 此时，在RegistryProtocol.export()方法中，进行服务注册时使用的Registry其实是一个ListenerRegistryWrapper装饰器，装饰着使用了ZookeeperServiceDiscovery的ServiceDiscoveryRegistry。
 
@@ -1903,7 +1903,7 @@ ZookeeperServiceDiscovery.doRegister()处理的URL注册其实就是在本地进
 
 **(2)然后注册registry的URL**
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/9e140b65953b4ed697e66ee256013e93~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754972248&x-orig-sign=ap0GPjvZrydTUafeSG1%2BYAFSRG0%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/e542cff1-dd63-46f9-8f13-e7e0d7fd2fcd" />
 
 此时，在RegistryProtocol.export()方法中，进行服务注册时使用的Registry其实是一个ListenerRegistryWrapper装饰器，装饰着一个ZooKeeperRegistry。
 
@@ -2138,12 +2138,12 @@ ZooKeeperRegistry.doRegister()处理的URL注册其实就是往注册中心注�
         ...
     }
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/27c7b4144b624096afa21b8f4b9431e2~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754972248&x-orig-sign=mRrT4R3ieQ8oItFVZ%2FCJkNSre1E%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/6b4c0c28-4a3e-40d9-8e24-da3e41cfb10d" />
 
 <br>
 
 **13.Dubbo服务发布的完整流程总结**
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/edc9401a47b042f296bfb2fde239ee3e~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754972248&x-orig-sign=cVQ5MSTIogtyd4TkK%2Bh77kof8f4%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/88ff7023-1e15-445c-b77b-be9aecdbbe37" />
 
-![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/2b174d5c6a1c488c8c6b69430a436196~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Lic6Ziz6ams55Sf5p625p6E:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA3NDEwNTkxNTY0OTAwMiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754972248&x-orig-sign=zXTfQy3uJu6T506aSQM%2F9r2w%2FEI%3D)[]()
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/05476fc8-f692-4036-b664-d8f9617a4e34" />
