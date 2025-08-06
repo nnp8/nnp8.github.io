@@ -5,7 +5,17 @@
 
 大模型系列：
 - 正在整理，敬请期待～
+  
+<br>
 
+商品系列：
+- 正在整理，敬请期待～
+  
+<br>
+
+订单系列：
+- 正在整理，敬请期待～
+  
 <br>
 
 RocketMQ系列：
@@ -15,4 +25,10 @@ RocketMQ系列：
 - [RocketMQ原理—4.消息读写的性能优化](./RocketMQ/RocketMQ原理—4.消息读写的性能优化.md)
 - [RocketMQ原理—5.高可用+高并发+高性能架构](./RocketMQ/RocketMQ原理—5.高可用+高并发+高性能架构.md)
 
+<br>
+
 Dubbo系列：
+- [Dubbo源码—1.服务发布的主要流程](./Dubbo/Dubbo源码—1.服务发布的主要流程.md)
+- [Dubbo源码—2.服务引用时创建代理的流程](./Dubbo/Dubbo源码—2.服务引用时创建代理的流程.md)
+- [Dubbo源码—3.服务引用时执行RPC的流程](./Dubbo/Dubbo源码—3.服务引用时执行RPC的流程.md)
+  
