@@ -1,5 +1,5 @@
 # nnp8.github.io
-分享积累，欢迎转载，感谢加星[github地址](https://github.com/nnp8/nnp8.github.io)
+分享积累，欢迎转载，感谢加星 [github地址](https://github.com/nnp8/nnp8.github.io)
 
 <br>
 
