@@ -32,4 +32,5 @@ Dubbo系列：
 - [Dubbo源码—3.服务引用时执行RPC的流程](./Dubbo/Dubbo源码—3.服务引用时执行RPC的流程.md)
 - [Dubbo源码—4.集群容错和负载均衡算法](./Dubbo/Dubbo源码—4.集群容错和负载均衡算法.md)
 - [Dubbo源码—5.SPI机制和线程模型](./Dubbo/Dubbo源码—5.SPI机制和线程模型.md)
+- [Dubbo源码—6.Provider端的主要模块上](./Dubbo/Dubbo源码—6.Provider端的主要模块上.md)
   
