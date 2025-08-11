@@ -120,7 +120,7 @@ public abstract class AbstractConfig implements Serializable {
 }
 ```
 
-**需要注意的是：Dubbo3里有一个model组件体系，其中ScopeModel是基础。ScopeModel类型可以转换为ModuleModel、ApplicationModel。**
+需要注意的是：Dubbo3里有一个model组件体系，其中ScopeModel是基础。ScopeModel类型可以转换为ModuleModel、ApplicationModel。
 
 <br>
 
@@ -214,15 +214,15 @@ public abstract class AbstractConfig implements Serializable {
 //所以model就成为了一个门面，在整个Dubbo框架里，如果要用到一些公共组件，就直接找model去获取就可以了
 ```
 
-**ScopeModel是model组件体系里最顶层的抽象父类，ScopeModel实现了一个关键接口ExtensionAccessor。ExtensionAccessor就是extension(SPI扩展实现类)的访问器，其中Accessor有访问器之意，所以ExtensionAccessor可以理解为是一个获取extension的组件。如果一个类实现了ExtensionAccessor接口，则随时可以获取指定接口的扩展实现类。**
+ScopeModel是model组件体系里最顶层的抽象父类，ScopeModel实现了一个关键接口ExtensionAccessor。ExtensionAccessor就是extension(SPI扩展实现类)的访问器，其中Accessor有访问器之意，所以ExtensionAccessor可以理解为是一个获取extension的组件。如果一个类实现了ExtensionAccessor接口，则随时可以获取指定接口的扩展实现类。
 
-**ScopeModel有一个类型是ScopeModel的parent属性。一个model组件体系会基于ScopeModel的parent属性来构建其组件间的关系结构，该结构与树结构类似。**
+ScopeModel有一个类型是ScopeModel的parent属性。一个model组件体系会基于ScopeModel的parent属性来构建其组件间的关系结构，该结构与树结构类似。
 
 <img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/3fa887f2-711a-4324-84ee-81eb15c20834" />
 
-**model组件体系对整个Dubbo源码的运行很关键的，可以认为它是SPI机制使用的入口。而ScopeModel是model组件体系的一个基础，ScopeModel类型是可以转换为ModuleModel、ApplicationModel。**
+model组件体系对整个Dubbo源码的运行很关键的，可以认为它是SPI机制使用的入口。而ScopeModel是model组件体系的一个基础，ScopeModel类型是可以转换为ModuleModel、ApplicationModel。
 
-**比如ModuleServiceRepository、ModelEnvironment、BeanFactory等很多通用的组件都可以通过ScopeModel去获取。**
+比如ModuleServiceRepository、ModelEnvironment、BeanFactory等很多通用的组件都可以通过ScopeModel去获取。
 
 <br>
 
