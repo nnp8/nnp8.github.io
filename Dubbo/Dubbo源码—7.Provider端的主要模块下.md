@@ -44,7 +44,7 @@
 
 **1.Dubbo服务启动源码细节**
 
-**Dubbo服务启动过程中，在执行服务实例的刷新操作时，首先会初始化一个ProviderConfig即provider服务实例。在下面的源码中可以看到：model组件体系对整个Dubbo源码的运行很关键的，可以认为它是SPI机制使用的入口。而ScopeModel是model组件体系的一个基础，ScopeModel类型是可以转换为ModuleModel、ApplicationModel。比如像ModuleServiceRepository，ModelEnvironment，BeanFactory等很多通用的组件都可以通过ScopeModel去获取。**
+Dubbo服务启动过程中，在执行服务实例的刷新操作时，首先会初始化一个ProviderConfig即provider服务实例。在下面的源码中可以看到：model组件体系对整个Dubbo源码的运行很关键的，可以认为它是SPI机制使用的入口。而ScopeModel是model组件体系的一个基础，ScopeModel类型是可以转换为ModuleModel、ApplicationModel。比如像ModuleServiceRepository，ModelEnvironment，BeanFactory等很多通用的组件都可以通过ScopeModel去获取。
 
 ```
 -> ServiceConfig.export()
@@ -167,7 +167,7 @@ public class ProviderConfig extends AbstractServiceConfig {
 
 **2.Dubbo对外暴露接口的反射处理过程**
 
-**将对外暴露的接口里的每个方法都构建一个MethodConfig，每个MethodConfig里也需要一批ArgumentConfig。因为作为对外暴露的接口，后续要被人调用，肯定需要知道方法和参数的情况。总不可能每次都进行反射调用，拿到method和args去进行处理。所以在刚开始启动时就对接口进行解析，拿到所有的method和args来进行处理。**
+将对外暴露的接口里的每个方法都构建一个MethodConfig，每个MethodConfig里也需要一批ArgumentConfig。因为作为对外暴露的接口，后续要被人调用，肯定需要知道方法和参数的情况。总不可能每次都进行反射调用，拿到method和args去进行处理。所以在刚开始启动时就对接口进行解析，拿到所有的method和args来进行处理。
 
 ```
 -> ServiceConfig.export()
@@ -411,7 +411,7 @@ public class ServiceConfig<T> extends ServiceConfigBase<T> {
 
 **4.剖析SPI自动激活@Activate注解**
 
-**在ServiceConfig中使用自动激活的示例入口如下：**
+在ServiceConfig中使用自动激活的示例入口如下：
 
 ```
 this.getExtensionLoader(ConfigInitializer.class).getActivateExtension(
@@ -419,7 +419,7 @@ this.getExtensionLoader(ConfigInitializer.class).getActivateExtension(
 );
 ```
 
-**这样在下面传入的URL就是"configInitializer://"。**
+这样在下面传入的URL就是"configInitializer://"。
 
 ```
 public class ExtensionLoader<T> {
@@ -545,9 +545,9 @@ public class ExtensionLoader<T> {
 }
 ```
 
-**SPI的自动激活机制的用处：某SPI扩展接口可能会有很多实现类，在Dubbo运行时，并非只能使用其中一个实现类，也可以使用多个实现类。而@Activate自动激活机制，便可以激活一个SPI扩展接口的很多实现类来一起使用。**
+SPI的自动激活机制的用处：某SPI扩展接口可能会有很多实现类，在Dubbo运行时，并非只能使用其中一个实现类，也可以使用多个实现类。而@Activate自动激活机制，便可以激活一个SPI扩展接口的很多实现类来一起使用。
 
-**像下面代码中的postProcessConfig()方法：最后会将获取到的ConfigPostProcessor的多个实现类进行遍历，然后让每个实现类都调用各自的方法执行处理。**
+像下面代码中的postProcessConfig()方法：最后会将获取到的ConfigPostProcessor的多个实现类进行遍历，然后让每个实现类都调用各自的方法执行处理。
 
 ```
 public class ServiceConfig<T> extends ServiceConfigBase<T> {
@@ -859,7 +859,7 @@ public final class ClassGenerator {
 
 **8.Protocol SPI自适应机制的源码细节**
 
-**首先ServiceConfig的protocolSPI会在postProcessAfterScopeModelChanged()方法中被赋值，其中会涉及到ExtensionLoader.getAdaptiveExtension()方法。**
+首先ServiceConfig的protocolSPI会在postProcessAfterScopeModelChanged()方法中被赋值，其中会涉及到ExtensionLoader.getAdaptiveExtension()方法。
 
 ```
 -> this.getExtensionLoader(Protocol.class).getAdaptiveExtension()
@@ -1180,7 +1180,7 @@ public class ServiceConfig<T> extends ServiceConfigBase<T> {
 
 **11.RegistryProtocol远程发布的源码细节**
 
-**RegistryProtocol远程发布的核心逻辑其实涉及两大Protocol：一是DubboProtocol建立网络服务进行监听，二是RegistryProtocol向注册中心注册。**
+RegistryProtocol远程发布的核心逻辑其实涉及两大Protocol：一是DubboProtocol建立网络服务进行监听，二是RegistryProtocol向注册中心注册。
 
 ```
 -> RegistryProtocol.export()
@@ -1272,7 +1272,7 @@ public class RegistryProtocol implements Protocol, ScopeModelAware {
 
 <br>
 
-**在RegistryProtocol的getRegistry()过程中，如果发现还没有注册中心实例，就会去进行创建。不过从Debug可以知道不是通过ZookeeperRegistry去构建，而是通过ServiceDiscoveryRegistry去构建，然后通过ZookeeperServiceDiscoveryFactory的createDiscovery()方法去建立与zk的连接。**
+在RegistryProtocol的getRegistry()过程中，如果发现还没有注册中心实例，就会去进行创建。不过从Debug可以知道不是通过ZookeeperRegistry去构建，而是通过ServiceDiscoveryRegistry去构建，然后通过ZookeeperServiceDiscoveryFactory的createDiscovery()方法去建立与zk的连接。
 
 <br>
 
@@ -1398,7 +1398,7 @@ public class ZookeeperServiceDiscovery extends AbstractServiceDiscovery {
 
 **(2)Consumer端使用ZookeeperRegistry建立与zk的连接**
 
-**刚开始构建ZookeeperRegistry，其核心就是去连接zk，与zk建立连接。**
+刚开始构建ZookeeperRegistry，其核心就是去连接zk，与zk建立连接。
 
 ```
 -> ZookeeperRegistryFactory.createRegistry()
@@ -1818,7 +1818,7 @@ public interface Exchanger {
 }
 ```
 
-**不过最直观的例子应该是：Transporters.getTransporter()方法中获取自适应Transporter类：**
+不过最直观的例子应该是：Transporters.getTransporter()方法中获取自适应Transporter类：
 
 ```
 public class Transporters {
@@ -1856,7 +1856,7 @@ public interface Transporter {
 }
 ```
 
-**在运行过程中，getExtensionLoader(Transporter.class).getAdaptiveExtension()动态拼接生成的代理类代码如下：可以看到对比Transporter接口的其中一个实现类NettyTransporter，它们的方法区别在于动态拼接生成的多了URL判断。**
+在运行过程中，getExtensionLoader(Transporter.class).getAdaptiveExtension()动态拼接生成的代理类代码如下：可以看到对比Transporter接口的其中一个实现类NettyTransporter，它们的方法区别在于动态拼接生成的多了URL判断。
 
 ```
 package org.apache.dubbo.remoting;
@@ -2026,7 +2026,7 @@ public class NettyTransporter implements Transporter {
 
 **17.NettyServer构建和打开的全流程**
 
-**NettyServer构造函数中的入参handler其实就是DubboProtocol中的requestHandler。bossGroup线程数是1，workerGroup线程数是CPU核数+1，但最多不会超过32个线程。**
+NettyServer构造函数中的入参handler其实就是DubboProtocol中的requestHandler。bossGroup线程数是1，workerGroup线程数是CPU核数+1，但最多不会超过32个线程。
 
 ```
 -> Transporters.bind()
@@ -2152,27 +2152,27 @@ public class DefaultExecutorRepository implements ExecutorRepository, Extens
 
 **18.NettyServerHandler的源码细节**
 
-**NettyServer本身就是一个handler，因为它的父类AbstractPeer就实现过ChannelHandler接口。而且AbstractPeer作为一个ChannelHandler实现，会实现handler的received()方法。NettyServer的createNettyServerHandler()方法会将NettyServer自己作为参数传入NettyServerHandler构造函数中。**
+NettyServer本身就是一个handler，因为它的父类AbstractPeer就实现过ChannelHandler接口。而且AbstractPeer作为一个ChannelHandler实现，会实现handler的received()方法。NettyServer的createNettyServerHandler()方法会将NettyServer自己作为参数传入NettyServerHandler构造函数中。
 
-**一.构建NettyServer时，会将DubboProtocol的requestHandler传入NettyServer的构造函数。**
+一.构建NettyServer时，会将DubboProtocol的requestHandler传入NettyServer的构造函数。
 
-**二.NettyServer的构造函数会将该requestHandler进行ChannelHandlers.wrap()后再交给其父类的构造函数。**
+二.NettyServer的构造函数会将该requestHandler进行ChannelHandlers.wrap()后再交给其父类的构造函数。
 
-**三.父类的构造函数最终找到AbstractPeer中，将包装的requestHandler赋值给AbstractPeer的handler字段。**
+三.父类的构造函数最终找到AbstractPeer中，将包装的requestHandler赋值给AbstractPeer的handler字段。
 
-**四.NettyServer在构造函数中会初始化NettyServerHandler，然后作为Netty服务器的ChannelHandler并启动。**
+四.NettyServer在构造函数中会初始化NettyServerHandler，然后作为Netty服务器的ChannelHandler并启动。
 
-**五.初始化NettyServerHandler时，NettyServerHandler会在构造函数中将NettyServer赋值给它的handler字段。**
+五.初始化NettyServerHandler时，NettyServerHandler会在构造函数中将NettyServer赋值给它的handler字段。
 
-**六.所以后续当Netty服务器接到网络请求要处理IO事件时，便会调用NettyServerHandler的channelRead()方法。**
+六.所以后续当Netty服务器接到网络请求要处理IO事件时，便会调用NettyServerHandler的channelRead()方法。
 
-**七.NettyServerHandler的channelRead()方法便会调用其handler的received()方法，也就是NettyServer的received()方法。**
+七.NettyServerHandler的channelRead()方法便会调用其handler的received()方法，也就是NettyServer的received()方法。
 
-**八.而NettyServer的received()方法，就是AbstractPeer的received()方法，因此会调用AbstractPeer的received()方法。**
+八.而NettyServer的received()方法，就是AbstractPeer的received()方法，因此会调用AbstractPeer的received()方法。
 
-**九.在AbstractPeer的received()方法中，会调用其handler的received()方法。也就是经过ChannelHandlers.wrap()包装后的DubboProtocol的requestHandler的received()方法。**
+九.在AbstractPeer的received()方法中，会调用其handler的received()方法。也就是经过ChannelHandlers.wrap()包装后的DubboProtocol的requestHandler的received()方法。
 
-**十.因此，最后会调用MultiMessageHandler的received()方法。**
+十.因此，最后会调用MultiMessageHandler的received()方法。
 
 ```
 -> NettyServer.doOpen()
@@ -2309,7 +2309,7 @@ public class DubboProtocol extends AbstractProtocol {
 
 **19.NettyServer如何转发请求给业务线程池**
 
-**关键在于：将DubboProtocol的ExchangeHandler类型的requestHandler传入时，会进行包装，包装的过程是由ChannelHandlers.wrap()来实现的。**
+关键在于：将DubboProtocol的ExchangeHandler类型的requestHandler传入时，会进行包装，包装的过程是由ChannelHandlers.wrap()来实现的。
 
 ```
 //构造NettyServer时
